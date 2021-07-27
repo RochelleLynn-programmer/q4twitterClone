@@ -1,0 +1,30 @@
+{%  extends 'base.html'  %}
+
+{%  block content  %}
+  {%  if request.user.is_authenticated  %}
+    {%  if request.user.username != profile.username  %}
+      {%  if profile in req_user_list  %}
+        <a href="/unfollow/{{  profile.id  }}">
+          <button>Unfollow</button>
+        </a>
+      {%  else  %}
+        <a href="/follow/{{  profile.id  }}">
+          <button>Follow</button>
+        </a>
+      {%  endif  %}
+    {%  endif  %}
+  {%  endif  %}
+
+  <h3>{{  profile.username  }}'s Profile</h3>
+  <p>ID: {{profile.id}}</p>
+  <p>Currently following: {{  count  }}</p>
+  <p>Number of tweets: {{  tweet_count  }}</p>
+  <h3>Tweets</h3>
+  {%  for tweet in tweets  %}
+    <p>{{  tweet  }}</p>
+  {%  endfor  %}
+  <h3>Following</h3>
+  {%  for follow in follow_list  %}
+    <p>{{  follow  }}</p>
+  {%  endfor  %}
+{%  endblock  %}

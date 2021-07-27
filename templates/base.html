@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Clone</title>
+</head>
+<body>
+  <button>
+    <a href='/'>Home </a>
+  </button>
+  {%  if request.user.is_authenticated  %}
+    <button>
+      <a href='/{{  request.user  }}/'>Profile</a>
+    </button>
+    <button>
+      <a href='/post_tweet/'>Post New Tweet</a>
+    </button>
+    <button>
+      <a href='/notifications/'>Notifications</a>
+    </button>
+    <button>
+      <a href='/logout'>Logout </a>
+    </button>
+  {%  else  %}
+    <button>
+      <a href='/login/'>Login </a>
+    </button>
+    <button>
+      <a href='/createuser/'>Create New Account </a>
+    </button>
+  {%  endif  %}
+<br>
+<h3>Hello, {{  request.user  }}</h3>
+<hr>
+  {%  block content  %}
+  {%  endblock  %}
+  
+</body>
+</html>
