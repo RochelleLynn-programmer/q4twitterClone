@@ -39,3 +39,7 @@ def unfollow(request, other_id):
   else:
         return HttpResponseRedirect(reverse('home'))
 
+
+def display_users(request):
+  users = TwitUser.objects.all()
+  return render(request, "users.html", {'users': users})

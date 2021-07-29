@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+button {
+  margin: 10px;
+}
+.content_contain {
+  background-color: white;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  box-shadow: 5px 5px 4px 3px rgba(193, 193, 193, 0.66);
+  padding: 20px;
+}
+
+.content_header {
+  align-self: center;
+}
+
+/* navbar */
+
+.navbar {
+  display: flex;
+  background-color: rgb(155, 13, 155);
+  height: 60px;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nav_greeting {
+  flex-grow: 1;
+}
+
+.nav_button_contain {
+  display: flex;
+  flex-grow: 2;
+  justify-content: flex-end;
+}

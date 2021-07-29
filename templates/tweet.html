@@ -1,8 +1,10 @@
 {%  extends 'base.html'  %}
 
 {%  block content  %}
-<p>
-  <b><a href="/{{  tweet.posted_by  }}/">{{  tweet.posted_by  }}</a></b>
-    says "<a href="/tweet/{{  tweet.id  }}">{{  tweet.tweet  }}</a>"  </p>
-      <p><small>Posted on {{  tweet.date_posted  }}</small></p>
+  <div class="content_contain">
+    <p>
+    <b><a href="/{{  tweet.posted_by  }}/">{{  tweet.posted_by  }}</a></b>
+      says "<a href="/tweet/{{  tweet.id  }}">{{  tweet.tweet  }}</a>"</p>
+    <p><small>Posted on {{  tweet.date_posted  }}</small></p>
+  </div>
 {%  endblock  %}

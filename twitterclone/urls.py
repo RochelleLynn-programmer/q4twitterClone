@@ -31,7 +31,8 @@ urlpatterns = [
     path('follow/<int:other_id>/', user_views.follow),
     path('unfollow/<int:other_id>/', user_views.unfollow),
     path('notifications/', n_views.display_notifications, name='notifications'),
-    path('<str:user_name>/', user_views.user_profile),
+    path('displayusers/', user_views.display_users),
     path('tweet/<int:tweet_id>/', t_views.view_specific_tweet),
+    path('<str:user_name>/', user_views.user_profile),
 ]
 

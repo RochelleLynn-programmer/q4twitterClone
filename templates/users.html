@@ -1,0 +1,12 @@
+{%  extends 'base.html'  %}
+
+{%  block content  %}
+<div class="content_contain">
+  <h3 class="content_header">Users you can follow</h3>
+  {%  for user in users  %}
+    {%  if request.user.username != user.username  %}
+      <p><a href='/{{  user  }}/'>{{  user  }}</a></p>
+    {%  endif  %}
+  {%  endfor  %}
+</div>
+{%  endblock  %}

@@ -1,30 +1,47 @@
 {%  extends 'base.html'  %}
 
 {%  block content  %}
-  {%  if request.user.is_authenticated  %}
-    {%  if request.user.username != profile.username  %}
-      {%  if profile in req_user_list  %}
-        <a href="/unfollow/{{  profile.id  }}">
-          <button>Unfollow</button>
-        </a>
-      {%  else  %}
-        <a href="/follow/{{  profile.id  }}">
-          <button>Follow</button>
-        </a>
+  <div class='content_contain'>
+    <h3 class='content_header'>{{  profile.username  }}'s Profile Information</h3>
+    <div classname='content_content'>
+      <p>ID: {{profile.id}}</p>
+      <p>Currently following: {{  count  }}</p>
+      <p>Number of tweets: {{  tweet_count  }}</p>
+      {%  if request.user.is_authenticated  %}
+        {%  if request.user.username != profile.username  %}
+          {%  if profile in req_user_list  %}
+            <a href="/unfollow/{{  profile.id  }}">
+              <button>Unfollow</button>
+            </a>
+          {%  else  %}
+            <a href="/follow/{{  profile.id  }}">
+              <button>Follow</button>
+            </a>
+          {%  endif  %}
+        {%  endif  %}
       {%  endif  %}
-    {%  endif  %}
-  {%  endif  %}
+    </div>
 
-  <h3>{{  profile.username  }}'s Profile</h3>
-  <p>ID: {{profile.id}}</p>
-  <p>Currently following: {{  count  }}</p>
-  <p>Number of tweets: {{  tweet_count  }}</p>
-  <h3>Tweets</h3>
-  {%  for tweet in tweets  %}
-    <p>{{  tweet  }}</p>
-  {%  endfor  %}
-  <h3>Following</h3>
-  {%  for follow in follow_list  %}
-    <p>{{  follow  }}</p>
-  {%  endfor  %}
+    <h3 class='content_header'>Tweets</h3>
+    <div classname='content_content'>
+      {%  if tweets.count > 0  %}
+        {%  for tweet in tweets  %}
+          <p><a href="/tweet/{{  tweet.id  }}">{{  tweet  }}</a></p>
+        {%  endfor  %}
+      {%  else  %}
+        <p>No tweets by this user</p>
+      {%  endif  %}
+    </div>
+
+    <h3 class='content_header'>Following</h3>
+    <div classname='content_content'>
+      {%  if follow_list.count > 0  %}
+        {%  for follow in follow_list  %}
+          <p><a href="/{{  follow.username  }}/">{{  follow  }}</a></p>
+        {%  endfor  %}
+      {%  else  %}
+        <p>This user is not following anyone else.</p>
+      {%  endif  %}
+    </div>
+  </div>
 {%  endblock  %}

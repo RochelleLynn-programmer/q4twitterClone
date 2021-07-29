@@ -1,10 +1,15 @@
 {%  extends 'base.html'  %}
 
 {%  block content  %}
-<h3>Notifications</h3>
-
-  {%  for notification in notifications  %}
-    <p><b>{{notification.sent_by}}</b> says "{{  notification  }}"</p>  
-  
-  {%  endfor  %}
+  <div class="content_contain">
+    <h3 class="content_header">Notifications</h3>
+      {%  if notifications.count > 0  %}
+        {%  for notification in notifications  %}
+          <p><b>{{notification.sent_by}}</b> says "{{  notification  }}"</p>  
+        
+        {%  endfor  %}
+      {%  else  %}
+        <p>No new notifications</p>
+      {%  endif  %}
+  </div>
 {%  endblock  %}

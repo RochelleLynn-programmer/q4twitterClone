@@ -1,21 +1,28 @@
 {%  extends 'base.html'  %}
 
 {%  block content  %}
-{% if notify > 0  %}
-<h5>You have {{notify}} <a href="/notifications/">notification(s)</a>!</h5>
-{%  endif  %}
-
-
-<h2>Tweets</h2>
-
-  {%  if combined  %}
-    {%  for tweet in combined  %}
-      <p><b><a href="/{{  tweet.posted_by  }}/">{{  tweet.posted_by  }}</a></b> says "<a href="/tweet/{{  tweet.id  }}">{{  tweet.tweet  }}</a>"  </p>
-      <p><small>Posted on {{  tweet.date_posted  }}</small></p>
-    {%  endfor  %}
-  {%  else  %}
-    <h3>No tweets to display!!</h3>
+  
+  {% if notify > 0  %}
+    <div class='content_contain'>
+      <h5>You have {{notify}} <a href="/notifications/">notification(s)</a>!</h5>
+    </div>
   {%  endif  %}
+
+  <div class='content_contain'>
+    <h3 class='content_header'>Tweets</h3>
+      {%  if combined  %}
+        {%  for tweet in combined  %}
+          <div class="content_content">
+            <p><b>
+              <a href="/{{  tweet.posted_by  }}/">{{  tweet.posted_by  }}</a>
+              </b> says "<a href="/tweet/{{  tweet.id  }}">{{  tweet.tweet  }}</a>"  </p>
+            <p><small>Posted on {{  tweet.date_posted  }}</small></p>
+            </div>
+        {%  endfor  %}
+      {%  else  %}
+        <h3>No tweets to display!!</h3>
+      {%  endif  %}
+  </div>
 
 
 
